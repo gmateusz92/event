@@ -1,0 +1,21 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% static "images" as baseUrl %}
+
+{% block content %}
+
+
+<center xmlns="http://www.w3.org/1999/html">
+
+<h1>Update Venue...
+</br>
+
+    <form action="" method=POST>
+        {% csrf_token %}
+    {{ venue }}
+{{ form.as_p }}
+    </br>
+    <input type="submit" value="Submit" class="btn btn-secondary">
+</center>
+
+{% endblock %}

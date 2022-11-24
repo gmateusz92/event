@@ -1,0 +1,28 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+	<center>
+	<h1>Add Venue To Database</h1>
+	<br/><br/> ID: {{ user.id }}
+	{% if submitted %}
+		Your Venue Was Submitted Succefully!!!
+
+	{% else %}
+
+		<form action="" method=POST>
+			{% csrf_token %}
+
+			{{ form.as_p }}
+
+			<input type="submit" value="Submit" class="btn btn-secondary">
+
+		</form>
+	{% endif %}
+	</center>
+{% else %}
+<h1>Soryy you must be logged in!</h1>
+<a class="nav-link" href="{% url 'login_user'  %}">Login</a>
+{% endif %}
+{% endblock %}

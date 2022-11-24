@@ -1,0 +1,38 @@
+{% extends 'blog/base.html' %}
+    {% block content %}
+
+<h1> Events</h1>
+<ul>
+
+{% for event in event_list %}
+    <div class="card">
+  <div class="card-header">
+    <strong>{{ event }}</strong>
+  </div>
+
+</div>
+
+    <ul>
+    <li>Date: {{ event.event_date }}</li>
+        <li>Venue: {{ event.venue}}</li>
+    <li>Venue URL: {{ event.venue.web }}</li>
+        <li>Venue phone: {{ event.venue.phone }}</li>
+    <li>Manager: {{ event.manager }}</li>
+    <li>Description: {{ event.description }}</li>
+     <li>   Attendes:</li>
+        {% for user in event.attendes.all %}
+
+         {{ user }}
+        {% endfor %}
+        {% if user.is_authenticated %}
+        <div class="card-footer text-muted">
+   <a href="{% url 'update_event' event.id %}" class="btn btn-secondary">Update </a>
+            <a href="{% url 'delete_event' event.id %}" class="btn btn-secondary">Delete </a>
+  </div>
+        {% else %}
+        <h1>You must be logged int</h1>
+        {% endif %}
+    </ul>
+{% endfor %}
+</ul>
+    {% endblock %}

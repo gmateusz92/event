@@ -1,0 +1,27 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% static "images" as baseUrl %}
+
+{% block content %}
+
+<body>
+<center>
+ <div class="card">
+  <div class="card-header">
+    Venue
+  </div>
+      <div class="card-body">
+          <h5 class="card-title">{{ venue }}</h5>
+    <p class="card-text">
+    <br/>
+   </div>
+{{ venue.adress }}<br/>
+{{ venue.zip_code }}<br/>
+{{ venue.phone }}<br/>
+{{ venue.web }}<br/>
+{{ venue.email_adress }}<br/>
+    <a href ="{{ venue.web }}"> {{ venue.web }} <br/>
+
+</body>
+
+{% endblock %}

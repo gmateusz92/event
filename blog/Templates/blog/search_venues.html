@@ -1,0 +1,23 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% static "images" as baseUrl %}
+
+
+{% block content %}
+
+<center>
+    <h1>Serch events
+    {% if searched %}
+        <h1> you searched for {{ searched }}<h1/>
+            <br>
+            {% for venue in venues %}
+             {{ venue.phone }}<br> -  <a href="{% url 'show_venue' venue.id %}"> {{ venue }}<a/>
+            <br/>
+            {% endfor %}
+
+    {% else %}
+            <h1>You forgot to search fo a venue<h1/>
+    {% endif %}
+</center>
+
+{% endblock %}

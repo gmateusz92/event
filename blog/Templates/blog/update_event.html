@@ -1,0 +1,36 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% static "images" as baseUrl %}
+
+{% block content %}
+
+
+<center xmlns="http://www.w3.org/1999/html">
+
+{% if user.is_authenticated %}
+    {% if user == event.manager %}
+<h1>Update Event...
+    <br>
+
+    <form action="" method=POST>
+         {% csrf_token %}
+         {{ form.as_p }}
+        </br>
+        <input type="submit" value="Submit" class="btn btn-secondary">
+
+        {% else %}
+        <h2>Access Denied</h2>
+        <p> only the events manager dan update this</p>
+
+         Logged in user:  {{ user }}
+        </br>
+        Event Manager: {{event.manager }}
+        </br>
+        {% endif %}
+</center>
+    {% else %}
+<h1>Soryy you must be logged in!</h1>
+<a class="nav-link" href="{% url 'login_user'  %}">Login</a>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% static "images" as baseUrl %}
+
+{% block content %}
+
+<body>
+<center>
+
+<h1>hello {{ name }} events
+{{ year }}
+{{ month }}
+</h1>
+{{ cal|safe }}
+<br><br>
+    Copyright {{ current_year }}
+    {{ time }}
+</center>
+</body>
+</html>
+{% endblock %}
